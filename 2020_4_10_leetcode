@@ -1,0 +1,21 @@
+// #151. 翻转字符串里的单词
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n=s.size();int l=0,r=0;int i=0;
+        bool flag=false;
+        string res="",tem;
+        while (i<n){
+        while (s[i]==' '&&i<n){++i;}
+        if (i>=n) break;
+        l=i;
+        while (s[i]!=' '&&i<n){++i;}
+        r=i;
+        tem=s.substr(l,r-l);
+        res.insert(0,tem);
+        res.insert(0," ");
+        }
+        res.replace(0,1,"");
+        return res;    
+    }
+};
