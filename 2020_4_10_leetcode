@@ -35,3 +35,19 @@ public:
     }
 }; 
 
+// #  88. 合并两个有序数组
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        vector tem(nums1);
+        int i=0;int l=0,r=0;
+        while (i<m+n){
+            if (l==m&&r<n) {nums1[i]=nums2[r];++r,++i;}
+            else if (r==n&&l<m) {nums1[i]=tem[l];++l,++i;}
+            else if (tem[l]<nums2[r]) {nums1[i]=tem[l];++l,++i;}
+            else {nums1[i]=nums2[r];++r,++i;}
+        }
+        if (m!=0&&n!=0)
+        nums1[m+n-1]=max(tem[m-1],nums2[n-1]);
+    }
+};
