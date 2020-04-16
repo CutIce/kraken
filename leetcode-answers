@@ -89,18 +89,19 @@ public:
     vector<vector<int>> merge(vector<vector<int>>& interval) {
         vector<vector<int>> tem;
         int numval=interval.size();
-        vector<int> in(numval,0);
+        vector<int> in(numval,0);                            // 判断第i个是否已经并入其他的，0-未并入，1-已并入
 
 
         for (int i=0;i<numval;++i){
             for (int j=i+1;j<numval;++j){
+                if (in[j]==1) continue;                      // 如果第j个已经并入过了，跳过j
                 if (interval[j][1]<interval[i][0]) continue; // 区间j在区间i前面   
                 if (interval[j][0]>interval[i][1]) continue; // 区间j在区间i后面
                 // j的尾在i的头后面 && j的头在i的尾前面
-                if (interval[j][0]<interval[i][0]){     // 区间j跨越i的头
+                if (interval[j][0]<interval[i][0]){     // 区间j夹住i的头，更新i的头
                     interval[i][0]=interval[j][0];
                 }
-                if (interval[j][1]>interval[i][1]){     // 区间j跨越i的尾
+                if (interval[j][1]>interval[i][1]){     // 区间j夹住i的尾，更新i的尾
                     interval[i][1]=interval[j][1];
                 }
                 in[j]=1;
@@ -113,12 +114,12 @@ public:
             else flag=false;
             ++k;
         }
-        if (flag) return interval;
+        if (flag) return interval;                     // 如果in数组里面都是0，代表没有一个并入其他，都是独立的区间，直接return
 
-        tem.erase(unique(tem.begin(),tem.end()),tem.end());
+        tem.erase(unique(tem.begin(),tem.end()),tem.end());  // 去重
 
         vector<vector<int>> res;
-        res=merge(tem);
+        res=merge(tem);                                      // tem里面还有交叉区间，再洗一遍数据
         return res;
     }
 };
