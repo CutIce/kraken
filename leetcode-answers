@@ -82,3 +82,43 @@ public:
         return {};
     }
 };
+
+// # 56 合并区间
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& interval) {
+        vector<vector<int>> tem;
+        int numval=interval.size();
+        vector<int> in(numval,0);
+
+
+        for (int i=0;i<numval;++i){
+            for (int j=i+1;j<numval;++j){
+                if (interval[j][1]<interval[i][0]) continue; // 区间j在区间i前面   
+                if (interval[j][0]>interval[i][1]) continue; // 区间j在区间i后面
+                // j的尾在i的头后面 && j的头在i的尾前面
+                if (interval[j][0]<interval[i][0]){     // 区间j跨越i的头
+                    interval[i][0]=interval[j][0];
+                }
+                if (interval[j][1]>interval[i][1]){     // 区间j跨越i的尾
+                    interval[i][1]=interval[j][1];
+                }
+                in[j]=1;
+            } 
+        }
+        int k=0;bool flag=true;
+        while (k<numval){
+            if (in[k]==0)
+            {tem.push_back(interval[k]);}
+            else flag=false;
+            ++k;
+        }
+        if (flag) return interval;
+
+        tem.erase(unique(tem.begin(),tem.end()),tem.end());
+
+        vector<vector<int>> res;
+        res=merge(tem);
+        return res;
+    }
+};
