@@ -5,7 +5,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "seqBinaryTree.h"
+#include "binaryTree.h"
 using namespace std;
 string intTostring(int n){
     stringstream ss;
