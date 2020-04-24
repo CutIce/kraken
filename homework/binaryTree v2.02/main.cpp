@@ -33,7 +33,7 @@ int main(){
     ss1<<pre;    while (i<n) {ss1>>tem;num1[i]=tem;++i;}
     ss2<<pos;    while (j<n) {ss2>>tem;num2[j]=tem;++j;}
 //    cout<<"pre"<<pre<<"----------------"<<"pos"<<"   "<<pos<<endl;
-    if (inarray(num1,n+1,n1,n2) ){
+    if (inarray(num1,n,n1,n2) ){
     for (i=0;i<n;++i){if (num1[i]==n1||num1[i]==n2) break; }
     for (j=n-1;j>=0;--j){if (num2[j]==n1||num2[j]==n2) break; }
 
