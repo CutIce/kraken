@@ -5,7 +5,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "binaryTree.h"
+#include "seqBinaryTree.h"
 using namespace std;
 string intTostring(int n){
     stringstream ss;
@@ -14,7 +14,7 @@ string intTostring(int n){
     ss>>s;
     return s;
 }
-bool inarray(int a[],int b[],int n,int data);
+bool inarray(int a[],int n,int data1,int data2);
 int main(){
     binaryTree tree;
     int n;
@@ -33,7 +33,7 @@ int main(){
     ss1<<pre;    while (i<n) {ss1>>tem;num1[i]=tem;++i;}
     ss2<<pos;    while (j<n) {ss2>>tem;num2[j]=tem;++j;}
 //    cout<<"pre"<<pre<<"----------------"<<"pos"<<"   "<<pos<<endl;
-    if (inarray(num1,num2,n+1,n1) && inarray(num1,num2,n+1,n2)){
+    if (inarray(num1,n+1,n1,n2) ){
     for (i=0;i<n;++i){if (num1[i]==n1||num1[i]==n2) break; }
     for (j=n-1;j>=0;--j){if (num2[j]==n1||num2[j]==n2) break; }
 
@@ -41,21 +41,19 @@ int main(){
         for (int q=j;q<n;++q) {if (num1[p]==num2[q])  {res=num1[p];break;} }
         if (res!=-1) break;}
 
-    delete num1;delete num2;
+    delete [] num1;delete [] num2;
     if (res!=-1) cout<<res<<endl;
-    else cout<<"error"<<endl;}
+    else cout<<"error"<<endl;
+    }
     else cout<<"error"<<endl;
     return 0;
 
 }
 
-bool inarray(int a[],int b[],int n,int data){
+bool inarray(int a[],int n,int data1 ,int data2){
     bool flag1=false,flag2=false;
-    for (int i=1;i<n;++i){
-        if (a[i]==data) {flag1=true;break;}
+    for (int i=0;i<n;++i){
+        if (a[i]==data1) {flag1=true;}
+        if (a[i]==data2) {flag2=true;}
     }
-    for (int i=1;i<n;++i)
-        if (b[i]==data) {flag2=true;break;}
-
-    return flag1&&flag2;
-}
+    return flag1&&flag2;}
