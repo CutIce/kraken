@@ -122,6 +122,33 @@ Clion/fast:
 	$(MAKE) -f CMakeFiles\Clion.dir\build.make CMakeFiles/Clion.dir/build
 .PHONY : Clion/fast
 
+binaryTree.obj: binaryTree.cpp.obj
+
+.PHONY : binaryTree.obj
+
+# target to build an object file
+binaryTree.cpp.obj:
+	$(MAKE) -f CMakeFiles\Clion.dir\build.make CMakeFiles/Clion.dir/binaryTree.cpp.obj
+.PHONY : binaryTree.cpp.obj
+
+binaryTree.i: binaryTree.cpp.i
+
+.PHONY : binaryTree.i
+
+# target to preprocess a source file
+binaryTree.cpp.i:
+	$(MAKE) -f CMakeFiles\Clion.dir\build.make CMakeFiles/Clion.dir/binaryTree.cpp.i
+.PHONY : binaryTree.cpp.i
+
+binaryTree.s: binaryTree.cpp.s
+
+.PHONY : binaryTree.s
+
+# target to generate assembly for a file
+binaryTree.cpp.s:
+	$(MAKE) -f CMakeFiles\Clion.dir\build.make CMakeFiles/Clion.dir/binaryTree.cpp.s
+.PHONY : binaryTree.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +185,9 @@ help:
 	@echo ... Clion
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... binaryTree.obj
+	@echo ... binaryTree.i
+	@echo ... binaryTree.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

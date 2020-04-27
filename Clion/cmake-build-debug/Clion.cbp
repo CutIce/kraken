@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/DataStructure/kraken/Clion/binaryTree.cpp">
+			<Option target="Clion"/>
+		</Unit>
+		<Unit filename="D:/DataStructure/kraken/Clion/binaryTree.h">
+			<Option target="Clion"/>
+		</Unit>
 		<Unit filename="D:/DataStructure/kraken/Clion/main.cpp">
 			<Option target="Clion"/>
 		</Unit>

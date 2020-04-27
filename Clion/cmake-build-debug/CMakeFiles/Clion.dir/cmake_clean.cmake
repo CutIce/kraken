@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Clion.dir/binaryTree.cpp.obj"
   "CMakeFiles/Clion.dir/main.cpp.obj"
   "Clion.exe"
   "Clion.exe.manifest"

@@ -3,4 +3,4 @@ project(Clion)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Clion main.cpp)
+add_executable(Clion main.cpp binaryTree.cpp  binaryTree.h)
