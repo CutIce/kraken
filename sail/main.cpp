@@ -15,14 +15,17 @@ int main(){
     int value;      cin>>value;
 
     int i;          i=pqueue.findMin(x);
-    if (i!=-1){
-    pqueue.print();  cout<<endl;
-    pqueue.decreaseKey(i,value);
-    pqueue.print();  cout<<endl;
+    if (i!=-1) {
+        pqueue.print();
+        cout << endl;
+        pqueue.decreaseKey(i, value);
+        pqueue.print();
+        cout << endl;
 
-    while (! pqueue.isEmpty()){
-        cout<<pqueue.deQueue()<<" ";
+        while (!pqueue.isEmpty()) {
+            cout << pqueue.deQueue() << " ";
+        }
     }
-    }
+
     return 0;
 }
