@@ -29,7 +29,7 @@ void MinMaxHeap<T>::VerifyMin(int i, T x){
 
 
 template  <class T>
-void MinMaxHeap<T>::VerifyMax(int p, T x){
+void MinMaxHeap<T>::VerifyMax(int i, T x){
     for (int gp=i/4; gp>0 && (x>data[gp]); gp/=4){
         data[i]=data[gp];
         i=gp;
@@ -129,5 +129,23 @@ T MinMaxHeap<T>::deleteMin(){
         }
     }
     data[i]=x;
-    return data[o];
+    return data[0];
+}
+
+
+template  <class T>
+void MinMaxHeap<T>::insert(T x){
+    if (length ==size-1) {cout<<"This queue is Full."<<endl; return ;}
+    ++length;
+    int p=length/2;
+    if (p==0) {data[1]=x;  return;}
+    switch (level(p)){
+        case 0:
+            if (x<data[p]){ data[length]=data[p]; VerifyMin(p,x);}
+            else VerifyMax((length,x);
+            break;
+        case 1:
+            if (x>data[p]) {data[length]=data[p]; VerifyMax(p,x) ;  }
+            else VerifyMin(length,x);
+        }
 }
