@@ -45,5 +45,12 @@ class RedBlackTree {
 
     void RR(redblacknode *gp);
 
+public:
+    RedBlackTree(redblacknode *t= nullptr) {root=t;}
+    ~RedBlackTree() {makeEmpty(root);}
+    set<KEY,OTHER> * find(const KEY &x);
+    void insert(const set<KEY,OTHER> &x);
+    void remove(const KEY &x);
+
 }
 #endif //TEST_REDBLACKTREE_H
