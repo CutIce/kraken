@@ -5,6 +5,9 @@
 #ifndef TEST_SORT_H
 #define TEST_SORT_H
 
+#include <iostream>
+using namespace std;
+
 template <class KEY,class OTHER>
 struct set{
     KEY key;
@@ -13,16 +16,27 @@ struct set{
 
 //简单插入排序
 template <class KEY,class OTHER>
+void print(set<KEY,OTHER> a[], int size){
+    for (int i=0;i<size;++i)
+        cout<<a[i].key<<" ";
+
+    cout<<endl;
+}
+
+
+template <class KEY,class OTHER>
 void simpleInsertSort(set<KEY,OTHER> a[], int size){
     int k;
     set<KEY,OTHER> tmp;
 
     for (int j=1;j<size;++j){
-        tem=a[j];
-        for (int i=j-1;i>=0 && tmp.key<a[i].key;--i){
-            a[i+1]=a[i];
+        tmp=a[j];
+        for (k=j-1;k>=0 && tmp.key<a[k].key;--k){
+            a[k+1]=a[k];
         }
-        a[i+1]=tmp;
+        a[k+1]=tmp;
+
+     print(a,size);
     }
 }
 
@@ -33,7 +47,17 @@ void shellSort(set<KEY,OTHER> a[], int size){
     int step,i,j;
     set<KEY,OTHER> tmp;
 
-    for (step=size/2; step>0; step/=2){
+//    for (step=size/2; step>0; step/=2){
+//        for (i=step;i<size;++i){
+//            tmp=a[i];
+//            for (j=i-step;j>=0 && a[j].key>tmp.key ; j-=step)
+//                a[j+step]=a[j];
+//
+//            a[j+step]=tmp;
+//        }
+//    }
+
+    for (step=5; step>=1; step-=2){
         for (i=step;i<size;++i){
             tmp=a[i];
             for (j=i-step;j>=0 && a[j].key>tmp.key ; j-=step)
@@ -41,6 +65,7 @@ void shellSort(set<KEY,OTHER> a[], int size){
 
             a[j+step]=tmp;
         }
+        print(a,size);
     }
 }
 
@@ -60,6 +85,8 @@ void simpleSelectSort(set<KEY,OTHER> a[], int size){
         tmp=a[i];            // exchange a[i] and a[min]
         a[i]=a[min];
         a[min]=tmp;
+
+        //print(a,size);
     }
 }
 
@@ -76,7 +103,7 @@ void percolateDown(set<KEY,OTHER> a[], int hole, int size){
         if (a[child].key > tmp.key )  a[hole]=a[child];
         else break;
     }
-    a[hole=tmp;]
+    a[hole]=tmp;
 }
 
 
@@ -90,9 +117,14 @@ void heapSort(set<KEY,OTHER> a[], int size){
         percolateDown(a,i,size);
     }
 
+    print(a,9);
+    cout<<endl;
+
+
     for (i=size-1;i>0;--i){
         tmp=a[0];a[0]=a[i];a[i]=tmp;
         percolateDown(a,0,i);
+        print(a,9);
     }
 }
 
@@ -104,16 +136,17 @@ void bubbleSort(set<KEY,OTHER> a[], int size){
     set<KEY,OTHER> tmp;
     bool flag=true;
 
-    for (i=0;i<size-1 && flag;++i){
+    for (i=0;i<size && flag;++i){
         flag=false;
-        for (j=0;j<size-i;++j){
+        for (j=0;j<size-i ;++j){
             if (a[j].key>a[j+1].key){
-                tmp=a[j];
-                a[j]=a[j+1];
-                a[j+1]=tmp;
+                tmp.key=a[j].key;
+                a[j].key=a[j+1].key;
+                a[j+1].key=tmp.key;
                 flag=true;
             }
         }
+        print(a,9);
     }
 }
 
@@ -125,10 +158,11 @@ int divide(set<KEY,OTHER> a[], int low, int high){
         while (low<high && a[high].key >=k.key) --high;
         if (low < high)  {a[low]=a[high]; ++low;}
         while (low<high && a[low].key<=k.key)  ++low;
-        if (low<high)   {a[high]=a[low]; --high}
+        if (low<high)   {a[high]=a[low]; --high;};
     }while(low!=high);
 
     a[low]=k;
+    print(a,9);
     return low;
 }
 
@@ -140,8 +174,11 @@ void quickSort(set<KEY,OTHER> a[], int low, int high){
     if (low>=high) return;
 
     mid=divide(a,low,high);
-    quickSort((a,low,mid-1);
-    quickSort(a,mid,high);
+    quickSort(a,low,mid-1);
+    quickSort(a,mid+1,high);
+    //print(a,9);
+    //print(a,9);
+
 }
 
 
@@ -160,7 +197,7 @@ void merge(set<KEY,OTHER> a[],int left, int mid, int right){
 
     while (i<mid && j<=right){
         if (a[i].key<a[j].key) {tmp[k]=a[i]; ++i;}
-        else {tmp[k]=a[j]; ++j}
+        else {tmp[k]=a[j]; ++j;};
         ++k;
     }
 
@@ -169,21 +206,25 @@ void merge(set<KEY,OTHER> a[],int left, int mid, int right){
 
     for (i=left,k=0;i<right+1; ++i,++k) a[i]=tmp[k];
     delete [] tmp;
+    print(a,9);
 }
 
 
 template <class KEY,class OTHER>
 void mergeSort(set<KEY,OTHER> a[], int left, int right){
     int mid=(left+right)/2;
+    if (left==right) return ;
     mergeSort(a,left,mid);
     mergeSort(a,mid+1,right);
-    merge(a,left,left,mid+1,right);
+    merge(a,left,mid+1,right);
+
 }
 
 
 template <class KEY,class OTHER>
 void mergeSort(set<KEY,OTHER> a[], int size){
     mergeSort(a,0,size-1);
+
 }
 
 

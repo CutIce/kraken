@@ -6,7 +6,8 @@
 
 
 template <class T>
-friend set<T> operator* (const set<T> & a, const set<T> & b);
+friend set<T> operator* (const set<T> & a, const set<T> & b){
+}
 
 template <class T>
 friend set<T> operator+ (const set<T> & a, const set<T> & b);
