@@ -1,7 +1,6 @@
 #ifndef TEST_ADJLISTGRAPH_H
 #define TEST_ADJLISTGRAPH_H
 
-#include <iostream>
 #include <string>
 using namespace std;
 
@@ -10,8 +9,8 @@ class queue{
 public:
     queue(){front=rear=nullptr;};
     ~queue() {
-        node *p;
-        while (front != nullptr ){
+        node *p=front;
+        while (front){
             p=front;
             front=front->next;
             delete p;}}
@@ -28,24 +27,25 @@ public:
         return tmp;
     };
     elemType gethead() const { return front->data;};
-    bool isempty(){return front == nullptr;}
+    bool isempty(){return front== nullptr;}
 private:
     struct node{
         elemType data;
         node *next;
         node(elemType & x,node *p= nullptr){data=x,next=p;}
         node():next(nullptr) {};
-        //~node(){};
+        ~node();
     };
     node *front,*rear;
 };
+
 
 // 邻接表定义
 class adjListGraph {
 public:
     adjListGraph(int Vsize,int d[]);
     void insert(int x,int y, int w);
-    //void remove(int x,int y);
+    void remove(int x,int y);
     bool exist(int x,int y) const{
         int u=find(x),v=find(y);
         if ( u<0 || v<0 ) return false;
@@ -55,21 +55,11 @@ public:
         else return true;
     };
     ~adjListGraph();
-    // 遍历
-    void bfs() const;
-    void print(){
-        edgeNode *p;
-        for (int i=0;i<Vers;++i)
-        {
-            cout<<verlist[i].ver<<"        ";
-            p=verlist[i].head;
-            while (p!= nullptr) {cout<<p->end<<" ";p=p->next;}
-            cout<<endl;
-        }
-    }
 
-    bool dfs(int start, int stop);
-    bool dfs(int start,int stop, queue<int> q,bool visited[]);
+    // 遍历
+    string dfs() const;
+    void bfs() const;
+    void topsort() const;
 
 private:
     int Vers,Edges;
@@ -95,8 +85,7 @@ private:
             if ( verlist[i].ver == v ) return i ;
         return -1;
     }
-    void dfs(int start, bool visited[] ) const;
 
-};
+    string dfs(int start, bool visited[]) const;
 
 #endif //TEST_ADJLISTGRAPH_H
