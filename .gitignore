@@ -1,0 +1,16 @@
+test/store/main.cpp
+test/cmake-build-debug/
+Clion/cmake-build-debug/CMakeFiles/clion-log.txt
+Clion/cmake-build-debug/
+ClionCode/.idea/
+Clion/
+ClionCode/main.cpp
+ClionCode/to_submit/CMakeLists.txt
+test/CMakeLists.txt
+ClionCode/CMakeLists.txt
+test/chap11/CMakeLists.txt
+test/chap7/CMakeLists.txt
+test/chap13/CMakeLists.txt
+test/chap8/CMakeLists.txt
+test/chap9/CMakeLists.txt
+test/store/CMakeLists.txt

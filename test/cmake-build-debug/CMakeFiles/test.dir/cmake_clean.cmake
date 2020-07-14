@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test.dir/maintoS.cpp.obj"
+  "CMakeFiles/test.dir/CFcoding/OthersQuestions/soj2105-maxRect-MonotonousStack.cpp.obj"
   "libtest.dll.a"
   "test.exe"
   "test.exe.manifest"

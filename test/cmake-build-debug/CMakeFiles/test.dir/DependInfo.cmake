@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/DataStructure/kraken/test/maintoS.cpp" "D:/DataStructure/kraken/test/cmake-build-debug/CMakeFiles/test.dir/maintoS.cpp.obj"
+  "D:/DataStructure/kraken/test/CFcoding/OthersQuestions/soj2105-maxRect-MonotonousStack.cpp" "D:/DataStructure/kraken/test/cmake-build-debug/CMakeFiles/test.dir/CFcoding/OthersQuestions/soj2105-maxRect-MonotonousStack.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
