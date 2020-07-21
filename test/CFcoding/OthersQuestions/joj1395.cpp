@@ -5,6 +5,8 @@
 // 线段树
 #include <iostream>
 #include <string.h>
+#include <algorithm>
+#define long long ll;
 using namespace std;
 
 //long long tree[400010], up[400010];
@@ -253,7 +255,7 @@ void display(node *r){
 
 
 void updata_x (node *r, int idx_start, int idx_end,int val){
-    if (idx_start == r->start && idx_end == r->end) {r->up = true; r->updata = val;}
+    if (idx_start == r->start && idx_end == r->end) {r->sum = val;}
     int mid = (r->start + r->end) / 2;
     if (idx_start <= mid && idx_end > mid){
         updata_x(r->left, idx_start, mid,val);
@@ -263,7 +265,24 @@ void updata_x (node *r, int idx_start, int idx_end,int val){
     {updata_x(r->left, idx_start, idx_end, val);}
     else if (idx_start > mid && idx_end <= r->end)
     {updata_x(r->right, idx_start,idx_end,val);}
+    r->sum = r->left->sum + r->right->sum;
 }
+
+
+void updata_abs (node *r, int idx_start, int idx_end){
+    if (idx_start == r->start && idx_end == r->end) {r->sum = abs(r->sum);}
+    int mid = (r->start + r->end) / 2;
+    if (idx_start <= mid && idx_end > mid){
+        updata_abs(r->left, idx_start, mid);
+        updata_abs(r->right, mid+1, idx_end);
+    }
+    else if (idx_start >= r->start && idx_start <= mid && idx_end <=mid )
+    {updata_abs(r->left, idx_start, idx_end);}
+    else if (idx_start > mid && idx_end <= r->end)
+    {updata_abs(r->right, idx_start,idx_end);}
+    r->sum = r->left->sum + r->right->sum;
+};
+
 
 
 

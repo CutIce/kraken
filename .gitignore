@@ -14,3 +14,10 @@ test/chap13/CMakeLists.txt
 test/chap8/CMakeLists.txt
 test/chap9/CMakeLists.txt
 test/store/CMakeLists.txt
+.idea/
+untitled/
+ClionCode/
+cmake-build-debug/
+test/.idea/
+test/CMakeLists.txt
+

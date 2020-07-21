@@ -97,9 +97,9 @@ int main(){
     int k,n; std::cin>>k>>n;
     int *A = new int [n];
     register int i,ans=0;
-    for(i=1;i<=n;i++){
+    for(i=0;i<n;i++){
         std::cin>>A[i];}
-    for(i=1;i<=n;i++){
+    for(i=0;i<n;i++){
         DDQueue::push(A[i]);
         while(DDQueue::get_ans()>k)
             DDQueue::pop();

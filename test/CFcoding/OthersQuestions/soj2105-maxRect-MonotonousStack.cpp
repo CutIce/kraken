@@ -87,7 +87,7 @@ int main(){
     for (int i=0;i<n;++i)
         cin>>data[i];
     stack<int> s;
-    vector<int>left(n),right(n,n);
+    vector<int>left(n),right(n);
     for(int i=0;i<n;i++){
         while(! s.empty()&& data[s.top()]>=data[i]){
             right[ s.top()]=i;
