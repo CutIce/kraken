@@ -1,3 +1,0 @@
-D:/DataStructure/kraken/sail/cmake-build-debug/CMakeFiles/sail.dir
-D:/DataStructure/kraken/sail/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/DataStructure/kraken/sail/cmake-build-debug/CMakeFiles/rebuild_cache.dir
