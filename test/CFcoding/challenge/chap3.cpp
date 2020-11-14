@@ -13,7 +13,7 @@
 #include <string.h>
 #include <math.h>
 using namespace std;
-
+int n;
 /*
 // segement tree
 const int MAX_N = 1 << 17;
@@ -123,21 +123,23 @@ double cos_x [360] = {1,0.999848,0.999391,0.99863,0.997564,0.996195,0.994522,0.9
                       0.75471,0.766044,0.777146,0.788011,0.798636,0.809017,0.819152,0.829038,0.838671,0.848048,0.857167,0.866025,0.87462,
                       0.882948,0.891007,0.898794,0.906308,0.913545,0.920505,0.927184,0.93358,0.939693,0.945519,0.951057,0.956305,0.961262,0.965926,
                       0.970296,0.97437,0.978148,0.981627,0.984808,0.987688,0.990268,0.992546,0.994522,0.996195,0.997564,0.99863,0.999391,0.999848};
-int main(){
-    int n;cin>>n;
-    int c;cin>>c;
+int main() {
+
+    cin >> n;
+    int c;
+    cin >> c;
     init(n);
-    for (int i=0;i<n;++i)
-        cin>>l[i];
-    for (int i=n-1;i >= 0;--i){
-        tree[i] = tree[1+1] + l[i];
+    for (int i = 0; i < n; ++i)
+        cin >> l[i];
+    for (int i = n - 1; i >= 0; --i) {
+        tree[i] = tree[1 + 1] + l[i];
     }
-    for (int i=0;i<n;++i) cout<<l[i]<<" ";
-    cout<<endl;
-    for (int i=0;i<n;++i) cout<<tree[i]<<" ";
+    for (int i = 0; i < n; ++i) cout << l[i] << " ";
+    cout << endl;
+    for (int i = 0; i < n; ++i) cout << tree[i] << " ";
     double place = 0.0;
     int angle_now = 180;
-    int s,a;
+    int s, a;
 //    while(c--){
 //        cin>>s>>a;
 //        angle_now -= a;
@@ -145,4 +147,36 @@ int main(){
 //        cout<<place<<endl;
 //    }
     return 0;
+}
+
+
+
+// 树状数组 Binary Indexed Tree
+int bit[MAX_N];
+
+int sum(int i){
+    int s =0;
+    while (i>0){
+        s += bit[i];
+        i -= i & -i;
+    }
+    return s;
+}
+
+void add(int i, int x){
+    while (i<=n){
+        bit[i] +=x;
+        i += i & -i;
+    }
+}
+
+typedef long long ll;
+int a[MAX_N];
+void solve(){
+    ll ans = 0;
+    for (int j = 0; j<n;++j){
+        ans += j - sum(a[j]);
+        add(a[j], 1);
+    }
+    printf("%lld\n", ans);
 }

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test.dir/CFcoding/challenge/chap3.cpp.obj"
+  "CMakeFiles/test.dir/main.cpp.obj"
   "libtest.dll.a"
   "test.exe"
   "test.exe.manifest"

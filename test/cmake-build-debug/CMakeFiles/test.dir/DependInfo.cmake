@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/DataStructure/kraken/test/CFcoding/challenge/chap3.cpp" "D:/DataStructure/kraken/test/cmake-build-debug/CMakeFiles/test.dir/CFcoding/challenge/chap3.cpp.obj"
+  "D:/DataStructure/kraken/test/main.cpp" "D:/DataStructure/kraken/test/cmake-build-debug/CMakeFiles/test.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
